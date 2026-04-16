@@ -301,6 +301,51 @@ body {
     color: var(--color-text-light);
 }
 
+.map-container {
+    margin-bottom: 30px;
+}
+
+.map-container iframe {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.map-container h4 {
+    text-align: center;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.map-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.map-tab {
+    padding: 10px 25px;
+    background: var(--color-white);
+    border: 2px solid var(--color-secondary);
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    color: var(--color-text);
+    transition: all 0.3s ease;
+}
+
+.map-tab:hover {
+    background: var(--color-light);
+}
+
+.map-tab.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+}
+
 .event-obs {
     text-align: center;
     max-width: 600px;
@@ -503,7 +548,8 @@ body {
 
 /* Modal */
 .modal {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     position: fixed;
     top: 0;
     left: 0;
@@ -513,10 +559,19 @@ body {
     z-index: 2000;
     justify-content: center;
     align-items: center;
+    display: flex;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal.active {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal.hiding {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal-content {
@@ -527,6 +582,19 @@ body {
     max-width: 400px;
     width: 90%;
     position: relative;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal.hiding .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
 }
 
 .modal-close {
@@ -568,6 +636,29 @@ body {
 .pix-instructions {
     font-size: 0.9rem;
     color: var(--color-text-light);
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #128C7E;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 400;
+    transition: background-color 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #0d7568;
+}
+
+.btn-whatsapp img {
+    width: 20px;
+    height: 20px;
 }
 
 /* Music Control */

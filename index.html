@@ -116,8 +116,15 @@
                     <a href="#" class="btn">Ver no Mapa</a>
                 </div>
             </div>
-            <div class="map-placeholder">
-                <span>Mapa Interativo</span>
+            <div class="map-tabs">
+                <button class="map-tab active" data-target="cerimonia">Localização da Cerimônia</button>
+                <button class="map-tab" data-target="recepcao">Localização da Recepção</button>
+            </div>
+            <div class="map-container" id="map-cerimonia">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.2474462040523!2d-35.2082349!3d-5.8206866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2fff3757298d1%3A0xd4174b54c1e38343!2sIgreja%20Cat%C3%B3lica%20-%20Capela%20Santo%20Ant%C3%B4nio!5e0!3m2!1spt-BR!2sbr!4v1776348683082!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="map-container hidden" id="map-recepcao">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.330843288749!2d-35.23970832358742!3d-5.808865557295926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2555a8f5f880d%3A0x758be91c089b5715!2sR.%20Dr.%20Manoel%20Miranda%2C%202888%20-%20Alecrim%2C%20Natal%20-%20RN%2C%2059060-020!5e0!3m2!1spt-BR!2sbr!4v1776348869884!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <p class="event-obs">
                 <strong>Observações:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -141,7 +148,7 @@
     <section id="presentes" class="section section-alt">
         <div class="container fade-in">
             <h2 class="section-title">Lista de Presentes</h2>
-            <p class="section-subtitle">Escolha um presente especial para nós</p>
+            <p class="section-subtitle">Escolha um presente especial para nós e mande um valor simbólico.</p>
             <div class="gifts-grid">
                 <div class="gift-card" data-name="Porta-retratos, potes, utensílios de cozinha e decoração" data-value="30" data-pix="00020126580014br.gov.bcb.pix0136...">
                     <div class="gift-image-placeholder">
@@ -293,7 +300,12 @@
             <div class="qr-code-placeholder">
                 <span>QR Code PIX</span>
             </div>
-            <p class="pix-instructions">Escaneie o QR Code acima para realizar o pagamento via PIX</p>
+            Chave: (84) 98788-9428 <br> Pedro Rian Araújo da Silva - Nu Pagamentos
+            <p class="pix-instructions">Escaneie o QR Code acima para realizar o pagamento via PIX e envie o comprovante via WhatsApp.</p>
+            <a href="https://wa.me/5584987889428?text=Olá!%20Acabei%20de%20enviar%20um%20presente%20especial%20para%20vocês!" class="btn-whatsapp">
+                <img src="assets/icons/whatsapp.png" alt="WhatsApp">
+                Enviar comprovante
+            </a>
         </div>
     </div>
 

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFAQ();
     initPixModal();
     initMusicPlayer();
+    initMapTabs();
 });
 
 function initCountdown() {
@@ -82,23 +83,30 @@ function initPixModal() {
             const card = this.closest('.gift-card');
             giftName.textContent = card.dataset.name;
             giftPrice.textContent = 'R$ ' + parseFloat(card.dataset.value).toFixed(2).replace('.', ',');
+            modal.classList.remove('hiding');
             modal.classList.add('active');
         });
     });
 
-    closeBtn.addEventListener('click', function() {
+    function closeModal() {
         modal.classList.remove('active');
-    });
+        modal.classList.add('hiding');
+        setTimeout(function() {
+            modal.classList.remove('hiding');
+        }, 300);
+    }
+
+    closeBtn.addEventListener('click', closeModal);
 
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
-            modal.classList.remove('active');
+            closeModal();
         }
     });
 
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
-            modal.classList.remove('active');
+            closeModal();
         }
     });
 }
@@ -125,5 +133,30 @@ function initMusicPlayer() {
         expandedPanel.classList.remove('active');
         toggleCollapsed.classList.remove('hidden');
         isPlaying = false;
+    });
+}
+
+function initMapTabs() {
+    const tabs = document.querySelectorAll('.map-tab');
+    const mapCerimonia = document.getElementById('map-cerimonia');
+    const mapRecepcao = document.getElementById('map-recepcao');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            const target = this.dataset.target;
+
+            tabs.forEach(function(t) {
+                t.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            if (target === 'cerimonia') {
+                mapCerimonia.classList.remove('hidden');
+                mapRecepcao.classList.add('hidden');
+            } else {
+                mapCerimonia.classList.add('hidden');
+                mapRecepcao.classList.remove('hidden');
+            }
+        });
     });
 }
