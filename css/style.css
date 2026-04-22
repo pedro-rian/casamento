@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
+*:focus {
+    outline: none;
+}
+
+@media (hover: hover) {
+    *:focus {
+        outline: auto;
+    }
+}
+
 :root {
     --color-primary: #87b3d0;
     --color-secondary: #4a9fc8;
@@ -190,7 +200,7 @@ body {
 .timeline {
     margin-top: 50px;
     position: relative;
-    max-width: 600px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -211,22 +221,44 @@ body {
     position: relative;
 }
 
+.timeline-item:nth-child(even) {
+    justify-content: flex-end;
+}
+
 .timeline-item:nth-child(odd) {
-    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.timeline-item:nth-child(even) .timeline-item-content {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.timeline-item:nth-child(odd) .timeline-item-content {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.timeline-item-content {
+    width: 40%;
+    padding: 15px;
+    text-align: center;
+}
+
+.timeline-item:nth-child(even) .timeline-item-content {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.timeline-item:nth-child(odd) .timeline-item-content {
+    text-align: right;
+    padding-right: 10px;
 }
 
 .timeline-date {
-    width: 50%;
-    padding: 10px 20px;
-    text-align: right;
     font-weight: 600;
     color: var(--color-accent);
-}
-
-.timeline-content {
-    width: 50%;
-    padding: 10px 20px;
-    text-align: left;
+    margin-bottom: 10px;
 }
 
 .timeline-image-placeholder {
@@ -244,6 +276,14 @@ body {
 .timeline-image-placeholder span {
     font-size: 0.7rem;
     color: var(--color-text-light);
+}
+
+.timeline-item:nth-child(even) .timeline-image-placeholder {
+    margin-right: auto;
+}
+
+.timeline-item:nth-child(odd) .timeline-image-placeholder {
+    margin-left: auto;
 }
 
 /* Event Section */
@@ -834,15 +874,25 @@ body {
     }
 
     .timeline-item,
+    .timeline-item:nth-child(even),
     .timeline-item:nth-child(odd) {
-        flex-direction: row;
+        justify-content: flex-start;
         padding-left: 50px;
     }
 
-    .timeline-date,
-    .timeline-content {
+    .timeline-item-content,
+    .timeline-item:nth-child(even) .timeline-item-content,
+    .timeline-item:nth-child(odd) .timeline-item-content {
         width: 100%;
         text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .timeline-item:nth-child(even) .timeline-image-placeholder,
+    .timeline-item:nth-child(odd) .timeline-image-placeholder {
+        margin-right: auto;
+        margin-left: 0;
     }
 
     .contact-cards {
