@@ -84,9 +84,23 @@ function initPixModal() {
             giftName.textContent = card.dataset.name;
             giftPrice.textContent = 'R$ ' + parseFloat(card.dataset.value).toFixed(2).replace('.', ',');
             modal.classList.remove('hiding');
-            modal.classList.add('active');
+            requestAnimationFrame(function() {
+                modal.classList.add('active');
+            });
         });
     });
+
+    const customGiftBtn = document.getElementById('btn-custom-gift');
+    if (customGiftBtn) {
+        customGiftBtn.addEventListener('click', function() {
+            giftName.textContent = 'Presente personalizado';
+            giftPrice.textContent = 'Valor livre';
+            modal.classList.remove('hiding');
+            requestAnimationFrame(function() {
+                modal.classList.add('active');
+            });
+        });
+    }
 
     function closeModal() {
         modal.classList.remove('active');
