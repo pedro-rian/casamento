@@ -83,6 +83,10 @@ function initPixModal() {
             const card = this.closest('.gift-card');
             giftName.textContent = card.dataset.name;
             giftPrice.textContent = 'R$ ' + parseFloat(card.dataset.value).toFixed(2).replace('.', ',');
+            const value = parseInt(card.dataset.value);
+            const qrImage = document.getElementById('qr-code-image');
+            qrImage.src = 'assets/images/QR-' + value + '.png';
+            qrImage.alt = 'QR Code PIX - R$ ' + card.dataset.value;
             modal.classList.remove('hiding');
             requestAnimationFrame(function() {
                 modal.classList.add('active');
@@ -95,6 +99,9 @@ function initPixModal() {
         customGiftBtn.addEventListener('click', function() {
             giftName.textContent = 'Presente personalizado';
             giftPrice.textContent = 'Valor livre';
+            const qrImage = document.getElementById('qr-code-image');
+            qrImage.src = 'assets/images/QR-livre.png';
+            qrImage.alt = 'QR Code PIX - Valor livre';
             modal.classList.remove('hiding');
             requestAnimationFrame(function() {
                 modal.classList.add('active');
