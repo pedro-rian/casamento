@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initCountdown() {
-    const weddingDate = new Date('2026-10-10T10:00:00').getTime();
+    const weddingDate = new Date('2026-10-10T09:30:00').getTime();
     
     function update() {
         const now = new Date().getTime();
