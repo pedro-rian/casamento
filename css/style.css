@@ -563,7 +563,7 @@ body {
 }
 
 .faq-item.active .faq-answer {
-    max-height: 200px;
+    max-height: 600px;
 }
 
 /* Contact Section */
@@ -664,6 +664,10 @@ body {
 
 .modal-close:hover {
     color: var(--color-text);
+}
+
+#modal-gift-name {
+    padding-right: 30px;
 }
 
 #modal-gift-price {
@@ -945,6 +949,19 @@ body {
     .contact-cards {
         flex-direction: column;
         gap: 30px;
+    }
+
+    .modal-content {
+        padding: 24px 20px;
+    }
+
+    .qr-code-placeholder {
+        width: 140px;
+        height: 140px;
+    }
+
+    #modal-gift-price {
+        font-size: 1.5rem;
     }
 }
 
