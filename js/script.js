@@ -77,20 +77,28 @@ function initPixModal() {
     const closeBtn = modal.querySelector('.modal-close');
     const giftName = document.getElementById('modal-gift-name');
     const giftPrice = document.getElementById('modal-gift-price');
+    const copyBtn = document.getElementById('btn-copy-pix');
+    const copyText = document.getElementById('btn-copy-text');
+    let currentPixCode = '';
+
+    function openModal(card) {
+        giftName.textContent = card.dataset.name;
+        giftPrice.textContent = 'R$ ' + parseFloat(card.dataset.value).toFixed(2).replace('.', ',');
+        const value = parseInt(card.dataset.value);
+        const qrImage = document.getElementById('qr-code-image');
+        qrImage.src = 'assets/images/QR-' + value + '.png';
+        qrImage.alt = 'QR Code PIX - R$ ' + card.dataset.value;
+        currentPixCode = card.dataset.pix || '';
+        copyText.textContent = 'Copiar Código PIX';
+        modal.classList.remove('hiding');
+        requestAnimationFrame(function() {
+            modal.classList.add('active');
+        });
+    }
 
     document.querySelectorAll('.gift-card button').forEach(function(btn) {
         btn.addEventListener('click', function() {
-            const card = this.closest('.gift-card');
-            giftName.textContent = card.dataset.name;
-            giftPrice.textContent = 'R$ ' + parseFloat(card.dataset.value).toFixed(2).replace('.', ',');
-            const value = parseInt(card.dataset.value);
-            const qrImage = document.getElementById('qr-code-image');
-            qrImage.src = 'assets/images/QR-' + value + '.png';
-            qrImage.alt = 'QR Code PIX - R$ ' + card.dataset.value;
-            modal.classList.remove('hiding');
-            requestAnimationFrame(function() {
-                modal.classList.add('active');
-            });
+            openModal(this.closest('.gift-card'));
         });
     });
 
@@ -102,12 +110,29 @@ function initPixModal() {
             const qrImage = document.getElementById('qr-code-image');
             qrImage.src = 'assets/images/QR-livre.png';
             qrImage.alt = 'QR Code PIX - Valor livre';
+            currentPixCode = '';
+            copyText.textContent = 'Copiar Código PIX';
             modal.classList.remove('hiding');
             requestAnimationFrame(function() {
                 modal.classList.add('active');
             });
         });
     }
+
+    copyBtn.addEventListener('click', function() {
+        if (!currentPixCode) return;
+        navigator.clipboard.writeText(currentPixCode).then(function() {
+            copyText.textContent = 'Copiado!';
+            setTimeout(function() {
+                copyText.textContent = 'Copiar Código PIX';
+            }, 2000);
+        }).catch(function() {
+            copyText.textContent = 'Erro ao copiar';
+            setTimeout(function() {
+                copyText.textContent = 'Copiar Código PIX';
+            }, 2000);
+        });
+    });
 
     function closeModal() {
         modal.classList.remove('active');
@@ -181,3 +206,4 @@ function initMapTabs() {
         });
     });
 }
+

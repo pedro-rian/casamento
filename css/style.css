@@ -701,6 +701,30 @@ body {
     color: var(--color-text-light);
 }
 
+.pix-code-wrapper {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-copy-pix {
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    background: var(--color-secondary);
+    width: 100%;
+    max-width: 280px;
+}
+
+.btn-copy-pix:hover {
+    background: var(--color-accent);
+}
+
+.btn-copy-pix:active {
+    transform: scale(0.97);
+}
+
 .btn-whatsapp {
     display: inline-flex;
     align-items: center;
@@ -923,3 +947,4 @@ body {
         gap: 30px;
     }
 }
+
