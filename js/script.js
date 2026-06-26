@@ -12,9 +12,21 @@ document.addEventListener('DOMContentLoaded', function() {
 function initRecepcaoButton() {
     const params = new URLSearchParams(window.location.search);
     if (params.has('recepcao')) {
-        const btn = document.getElementById('rsvp-recepcao-btn');
-        if (btn) {
-            btn.style.display = 'inline-block';
+        const btnCerimonia = document.getElementById('rsvp-cerimonia-btn');
+        if (btnCerimonia) {
+            btnCerimonia.style.display = 'none';
+        }
+        const btnRecepcao = document.getElementById('rsvp-recepcao-btn');
+        if (btnRecepcao) {
+            btnRecepcao.style.display = 'inline-block';
+        }
+        const textCerimonia = document.getElementById('rsvp-text');
+        if (textCerimonia) {
+            textCerimonia.style.display = 'none';
+        }
+        const textRecepcao = document.getElementById('rsvp-text-recepcao');
+        if (textRecepcao) {
+            textRecepcao.style.display = 'block';
         }
     } else {
         document.querySelectorAll('.recepcao-item').forEach(function(el) {
