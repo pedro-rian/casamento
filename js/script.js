@@ -6,7 +6,30 @@ document.addEventListener('DOMContentLoaded', function() {
     initPixModal();
     initMusicPlayer();
     initMapTabs();
+    initRecepcaoButton();
 });
+
+function initRecepcaoButton() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('recepcao')) {
+        const btn = document.getElementById('rsvp-recepcao-btn');
+        if (btn) {
+            btn.style.display = 'inline-block';
+        }
+    } else {
+        document.querySelectorAll('.recepcao-item').forEach(function(el) {
+            el.style.display = 'none';
+        });
+        const mapTabs = document.getElementById('map-tabs');
+        if (mapTabs) {
+            mapTabs.style.display = 'none';
+        }
+        const eventGrid = document.getElementById('event-grid');
+        if (eventGrid) {
+            eventGrid.classList.add('single-card');
+        }
+    }
+}
 
 function initCountdown() {
     const weddingDate = new Date('2026-10-10T09:30:00').getTime();
