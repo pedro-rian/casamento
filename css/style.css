@@ -419,6 +419,12 @@ body {
     margin-top: 20px;
 }
 
+.rsvp-deadline {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--color-text-light);
+}
+
 /* Buttons */
 .btn {
     display: inline-block;

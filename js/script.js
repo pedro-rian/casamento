@@ -28,6 +28,10 @@ function initRecepcaoButton() {
         if (textRecepcao) {
             textRecepcao.style.display = 'block';
         }
+        const deadline = document.getElementById('rsvp-deadline');
+        if (deadline) {
+            deadline.style.display = 'block';
+        }
     } else {
         document.querySelectorAll('.recepcao-item').forEach(function(el) {
             el.style.display = 'none';
