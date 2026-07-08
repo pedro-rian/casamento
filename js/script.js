@@ -118,6 +118,7 @@ function initPixModal() {
     const giftPrice = document.getElementById('modal-gift-price');
     const copyBtn = document.getElementById('btn-copy-pix');
     const copyText = document.getElementById('btn-copy-text');
+    const pixKey = '4690955a-f24c-4777-93ee-335d3f43f8aa';
     let currentPixCode = '';
 
     function openModal(card) {
@@ -149,8 +150,8 @@ function initPixModal() {
             const qrImage = document.getElementById('qr-code-image');
             qrImage.src = 'assets/images/QR-livre.png';
             qrImage.alt = 'QR Code PIX - Valor livre';
-            currentPixCode = '';
-            copyText.textContent = 'Copiar Código PIX';
+            currentPixCode = pixKey;
+            copyText.textContent = 'Copiar Chave PIX';
             modal.classList.remove('hiding');
             requestAnimationFrame(function() {
                 modal.classList.add('active');
@@ -160,15 +161,16 @@ function initPixModal() {
 
     copyBtn.addEventListener('click', function() {
         if (!currentPixCode) return;
+        const originalText = copyText.textContent;
         navigator.clipboard.writeText(currentPixCode).then(function() {
             copyText.textContent = 'Copiado!';
             setTimeout(function() {
-                copyText.textContent = 'Copiar Código PIX';
+                copyText.textContent = originalText;
             }, 2000);
         }).catch(function() {
             copyText.textContent = 'Erro ao copiar';
             setTimeout(function() {
-                copyText.textContent = 'Copiar Código PIX';
+                copyText.textContent = originalText;
             }, 2000);
         });
     });
